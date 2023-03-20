@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Cat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Kat Toevoegen</h1>
+    <form action="{{ url_for('add_cat') }}" method="post">
+        <label for="name">Naam:</label>
+        <input type="text" name="name" id="name" required>
+        <br>
+        <label for="color">Kleur:</label>
+        <select name="color" id="color" required>
+            <option value="Zwart">Zwart</option>
+            <option value="Wit">Wit</option>
+            <option value="Grijs">Grijs</option>
+            <option value="Rood">Rood</option>
+            <option value="Crème">Crème</option>
+            <option value="Tabby">Tabby</option>
+        </select>
+        
+        <br>
+        <label for="Ras">Breed:</label>
+        <select name="breed" id="breed" required >
+            <option value="Maine Coone">Maine Coone</option>
+            <option value="British Shorthair">British Shorthair</option>
+            <option value="Bombay">Bombay</option>
+        </select>
+        <br>
+        <label for="daily_food">Eten per dag (in gram):</label>
+        <input type="number" name="daily_food" id="daily_food" required>
+        <br>
+        <button type="submit">Kat toevoegen</button>
+    </form>
+    <a href="{{ url_for('list_cats') }}">Terug naar home</a>
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>
+

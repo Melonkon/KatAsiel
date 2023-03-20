@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katten Asiel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Katten Asiel</h1>
+    <a href="{{ url_for('add_cat') }}">Kat toevoegen</a>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Naam</th>
+            <th>Kleur</th>
+            <th>Ras</th>
+            <th>Dagelijkse hoeveelheid eten</th>
+            <th>Acties</th>
+        </tr>
+        {% for cat in cats %}
+        <tr>
+            <td>{{ cat.id }}</td>
+            <td><a href="{{ url_for('add_food', cat_id=cat.id) }}">{{ cat.name }}</a></td>
+            <td>{{ cat.color }}</td>
+            <td>{{ cat.breed }}</td>
+            <td>{{ cat.daily_food }}</td>
+            <td>
+                <a href="{{ url_for('update_cat', cat_id=cat.id) }}">Edit</a>
+                <a href="{{ url_for('delete_cat', cat_id=cat.id) }}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>
