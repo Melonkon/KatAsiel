@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Cat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<h2>Voedselconsumptie voor {{ cat.name }}</h2>
+
+<form method="POST">
+    <label for="food_consumed">Voedsel geconsumeerd (in gram):</label>
+    <input type="number" step="any" id="food_consumed" name="food_consumed" required>
+    <br>
+    <label for="date">Datum:</label>
+    <input type="date" id="date" name="date" required>
+    <br>
+    <br>
+    <input type="submit" value="Voedselconsumptie toevoegen">
+</form>
+
+<a href="{{ url_for('list_cats') }}">Terug naar home</a>
+
+<h3>Voedselgeschiedenis</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Datum</th>
+            <th>Voedsel geconsumeerd</th>
+            <th>Hoeveelheid eten per dag</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for entry in feeding_history %}
+        <tr>
+            <td>{{ entry.date }}</td>
+            <td>{{ entry.food_consumed }}</td>
+            <td>{{ cat.daily_food }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

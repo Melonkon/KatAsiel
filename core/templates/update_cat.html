@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Kat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Update Kat</h1>
+    <form action="{{ url_for('update_cat', cat_id=cat.id) }}" method="post">
+        <label for="name">Naam:</label>
+        <input type="text" name="name" id="name" value="{{ cat.name }}" required>
+        <br>
+        <label for="color">Kleur:</label>
+        <select name="color" id="color" required>
+            <option value="Zwart" {% if cat.color == 'Zwart' %}selected{% endif %}>Zwart</option>
+            <option value="Wit" {% if cat.color == 'Wit' %}selected{% endif %}>Wit</option>
+            <option value="Grijs" {% if cat.color == 'Grijs' %}selected{% endif %}>Grijs</option>
+            <option value="Rood" {% if cat.color == 'Rood' %}selected{% endif %}>Rood</option>
+            <option value="Crème" {% if cat.color == 'Crème' %}selected{% endif %}>Crème</option>
+            <option value="Chocolade" {% if cat.color == 'Chocolade' %}selected{% endif %}>Chocolade</option>
+            <option value="Cinnamon" {% if cat.color == 'Cinnamon' %}selected{% endif %}>Cinnamon</option>
+            <option value="Fawn" {% if cat.color == 'Fawn' %}selected{% endif %}>Fawn</option>
+        </select>
+        
+        <br>
+        <label for="breed">Ras:</label>
+        <select name="breed" id="breed" required>
+            <option value="Maine coone" {% if cat.breed == 'Maine coone' %}selected{% endif %}>Maine Coone</option>
+            <option value="British Shorthair" {% if cat.breed == 'British Shorthair' %}selected{% endif %}>British Shorthair</option>
+            <option value="Bombay" {% if cat.breed == 'Bombay' %}selected{% endif %}>Bombay</option>
+        </select>
+        <br>
+        <label for="daily_food">Eten per dag (in gram):</label>
+        <input type="number" name="daily_food" id="daily_food" value="{{ cat.daily_food }}" required>
+        <br>
+        <button type="submit">Update Kat</button>
+    </form>
+    <a href="{{ url_for('list_cats') }}">Back to Cat List</a>
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>
